@@ -24,15 +24,18 @@ public class Login {
             if (!f) {
                 ReadProductExcel readProductExcel = new ReadProductExcel();
                 Product product[] = readProductExcel.readExcel(out);
-                System.out.println("登录成功");
+                /*System.out.println("登录成功");
                 System.out.print("商品id" + "\t");
                 System.out.print("商品名字" + "\t");
                 System.out.print("商品价格" + "\t");
-                System.out.println("商品描述");
+                System.out.println("商品描述");*/
                 for (int i = 0; i < product.length; i++) {
                     System.out.print(product[i].getId() + "\t");
                     System.out.print(product[i].getName() + "\t");
-                    System.out.print(product[i].getPrice() + "\t");
+                    if(i!=0) {
+                        System.out.print(product[i].getPrice() + "\t");
+                    }else
+                        System.out.print("price" + "\t");
                     System.out.println(product[i].getDsc());
                 }
             } else {

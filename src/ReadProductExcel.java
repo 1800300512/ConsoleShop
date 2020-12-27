@@ -14,7 +14,7 @@ public class ReadProductExcel {
             XSSFWorkbook xw = new XSSFWorkbook(in);
             XSSFSheet xs = xw.getSheetAt(0);
             products = new Product[xs.getLastRowNum()];
-            for (int j = 1; j <= xs.getLastRowNum(); j++) {
+            for (int j = 0; j < xs.getLastRowNum(); j++) {
                 XSSFRow row = xs.getRow(j);
                 Product product = new Product();//每循环一次就把电子表格的一行的数据给对象赋值
                 for (int k = 0; k <= row.getLastCellNum(); k++) {
@@ -26,12 +26,15 @@ public class ReadProductExcel {
                     } else if (k == 1) {
                         product.setName(this.getValue(cell));//给password属性赋值
                     } else if (k == 2) {
-                        product.setPrice(Float.valueOf(this.getValue(cell)));//给address属性赋值
+                        if(j==0){
+
+                        }else
+                            product.setPrice(Float.valueOf(this.getValue(cell)));//给address属性赋值
                     } else if (k == 3) {
                         product.setDsc(this.getValue(cell));//给phone属性赋值
                     }
                 }
-                products[j-1] = product;
+                products[j] = product;
             }
 
         } catch (IOException e) {
