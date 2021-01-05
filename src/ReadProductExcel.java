@@ -3,6 +3,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -26,9 +27,9 @@ public class ReadProductExcel {
                     } else if (k == 1) {
                         product.setName(this.getValue(cell));//给password属性赋值
                     } else if (k == 2) {
-                        if(j==0){
+                        if (j == 0) {
 
-                        }else
+                        } else
                             product.setPrice(Float.valueOf(this.getValue(cell)));//给address属性赋值
                     } else if (k == 3) {
                         product.setDsc(this.getValue(cell));//给phone属性赋值
@@ -73,4 +74,8 @@ public class ReadProductExcel {
         }
         return value;
     }
+
+
 }
+
+

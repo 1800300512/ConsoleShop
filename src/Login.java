@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Login {
     public static void main(String[] args) throws ClassNotFoundException {
         boolean f = true;
+        boolean t=false;
         Scanner sc = new Scanner(System.in);
         while (f) {
             System.out.println("请输入用户名");
@@ -24,11 +25,6 @@ public class Login {
             if (!f) {
                 ReadProductExcel readProductExcel = new ReadProductExcel();
                 Product product[] = readProductExcel.readExcel(out);
-                /*System.out.println("登录成功");
-                System.out.print("商品id" + "\t");
-                System.out.print("商品名字" + "\t");
-                System.out.print("商品价格" + "\t");
-                System.out.println("商品描述");*/
                 for (int i = 0; i < product.length; i++) {
                     System.out.print(product[i].getId() + "\t");
                     System.out.print(product[i].getName() + "\t");
@@ -37,7 +33,44 @@ public class Login {
                     }else
                         System.out.print("price" + "\t");
                     System.out.println(product[i].getDsc());
+                }int k=0;
+                int l=0;
+                Product spc[] = new Product[10];
+                while (true) {
+                    System.out.println("请输入要购买的商品编号");
+                    String i = sc.next();
+
+
+                    for (int j = 1; j < product.length; j++) {
+                        if (i.equals(product[j].getId())) {
+                            spc[k] = product[j];
+                            t = true;
+                            k++;
+                            break;
+                        }
+                    }
+                    if (!t) {
+                        System.out.println("没有这个商品");
+                    }
+                    if(l==0)
+                    {
+                        System.out.println("是否继续购买，继续输入0，不继续输入1");
+                        l=sc.nextInt();
+                        if(l==1)
+                            break;
+                    }
                 }
+                float a=0;
+                for(int j=0;j<spc.length;j++)
+                {
+                    System.out.println(spc[j].getId());
+                    System.out.println(spc[j].getName());
+                    System.out.println(spc[j].getPrice());
+                    System.out.println(spc[j].getDsc());
+                    a=a+spc[j].getPrice();
+
+                }
+                System.out.println("总价格："+a);
             } else {
                 System.out.println("登录失败");
             }
